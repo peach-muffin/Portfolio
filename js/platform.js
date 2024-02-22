@@ -39,44 +39,25 @@ function atcoder() {
         .catch(error => console.error('Error fetching data:', error));
 }
 
-// atcoder()
 
-// function codechef() {
-//     const url = `https://www.codechef.com/users/${handle}`;
 
-//     const jsdom = require("jsdom");
-//     const { JSDOM } = jsdom;
+atcoder()
 
-//     JSDOM.fromURL(url).then(dom => {
-//         const currentRating = dom.window.document.querySelector(".rating-number").textContent;
-//         const maxRating = dom.window.document.querySelector(".rating-header small").textContent;
-//         document.querySelector('#codechef_max').textContent += maxRating
-//         document.querySelector('#codechef_curr').textContent += currentRating
-//         console.log(`Your current CodeChef rating is ${currentRating} and your maximum rating is ${maxRating}`);
-//     }).catch(error => console.error(error));
-// }
-
-// codechef()
-async function codechef() {
-    // const handle = 'your_handle_here'; // Replace 'your_handle_here' with your actual handle
+function codechef() {
     const url = `https://www.codechef.com/users/${handle}`;
 
-    try {
-        const response = await fetch(url);
-        const html = await response.text();
-        const dom = new JSDOM(html);
+    const jsdom = require("jsdom");
+    const { JSDOM } = jsdom;
 
+    JSDOM.fromURL(url).then(dom => {
         const currentRating = dom.window.document.querySelector(".rating-number").textContent;
         const maxRating = dom.window.document.querySelector(".rating-header small").textContent;
-
-        document.querySelector('#codechef_max').textContent += maxRating;
-        document.querySelector('#codechef_curr').textContent += currentRating;
-
+        document.querySelector('#codechef_max').textContent += maxRating
+        document.querySelector('#codechef_curr').textContent += currentRating
         console.log(`Your current CodeChef rating is ${currentRating} and your maximum rating is ${maxRating}`);
-    } catch (error) {
-        console.error(error);
-    }
+    }).catch(error => console.error(error));
 }
 
-codechef();
+codechef()
+
 
